@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>iPad Pro (M4) Buying Guide — US Market Analysis (Nov 2026)</title>
   <meta name="description" content="A 77-second vertical buying guide analyzing what the iPad Pro (M4) does well, how its hardware specs translate to real creative work, and whether it is worth buying in the US right now.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141713'/%3E%3Crect x='4' y='4' width='24' height='24' fill='%23FFF200'/%3E%3Cpolygon points='13,10 23,16 13,22' fill='%23141413'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
@@ -33,43 +34,43 @@
     .wrap {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 40px 24px 72px;
+      padding: 20px 24px 64px;
     }
     header {
       border-bottom: 1px solid #2e332d;
-      padding-bottom: 24px;
-      margin-bottom: 36px;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
     }
     .kicker {
       display: inline-block;
       background: var(--yellow);
       color: var(--ink);
       font-weight: 800;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 4px 10px;
-      margin-bottom: 12px;
+      padding: 3px 9px;
+      margin-bottom: 8px;
     }
     h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 6px;
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
       font-weight: 800;
       letter-spacing: -0.02em;
-      line-height: 1.08;
+      line-height: 1.1;
     }
     .subtitle {
       margin: 0;
       font-family: 'Newsreader', Georgia, serif;
       font-style: italic;
-      font-size: 1.2rem;
+      font-size: 1.06rem;
       color: var(--stone);
-      max-width: 720px;
+      max-width: 740px;
     }
     .grid {
       display: grid;
-      grid-template-columns: minmax(300px, 380px) 1fr;
-      gap: 40px;
+      grid-template-columns: auto 1fr;
+      gap: 36px;
       align-items: start;
     }
     @media (max-width: 860px) {
@@ -77,13 +78,20 @@
     }
     .player-col {
       position: sticky;
-      top: 24px;
+      top: 16px;
+      width: fit-content;
+      max-width: 100%;
+    }
+    @media (max-width: 860px) {
+      .player-col { position: static; margin: 0 auto; }
     }
     .reel-frame {
+      position: relative;
       background: #0d0f0c;
       border: 2px solid #2e332d;
+      height: min(72vh, 580px);
       aspect-ratio: 9 / 16;
-      width: 100%;
+      max-width: calc(100vw - 48px);
       overflow: hidden;
     }
     .reel-frame video {
@@ -92,42 +100,100 @@
       display: block;
       object-fit: contain;
       background: #0d0f0c;
+      cursor: pointer;
     }
-    .player-meta {
-      margin-top: 12px;
+    .play-overlay {
+      position: absolute;
+      inset: 0;
       display: flex;
-      justify-content: space-between;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--stone);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(20, 23, 19, 0.36);
+      border: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      color: var(--ink);
+      transition: opacity 0.15s ease;
     }
-    .download-btn {
-      display: inline-block;
-      margin-top: 14px;
+    .play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .play-btn-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       background: var(--yellow);
       color: var(--ink);
-      text-decoration: none;
+      padding: 14px 22px;
+      font-family: 'Archivo', sans-serif;
       font-weight: 800;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+    }
+    .play-overlay:hover .play-btn-box {
+      transform: scale(1.03);
+    }
+    .player-meta {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--stone);
+    }
+    .player-actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--ink);
+      border: 0;
+      text-decoration: none;
+      font-family: 'Archivo', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 10px 16px;
+      padding: 9px 14px;
+      cursor: pointer;
     }
-    .download-btn:hover { opacity: 0.92; }
+    .action-btn.secondary {
+      background: var(--panel);
+      color: var(--white);
+      border: 1px solid #353b34;
+    }
+    .action-btn:hover { opacity: 0.9; }
+    .video-status {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--red);
+      display: none;
+    }
 
     h2 {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      margin: 0 0 14px;
+      margin: 0 0 12px;
       letter-spacing: -0.01em;
     }
-    section + section { margin-top: 34px; }
+    section + section { margin-top: 30px; }
 
     .verdict-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 12px;
     }
     @media (max-width: 640px) {
       .verdict-grid { grid-template-columns: 1fr; }
@@ -135,7 +201,7 @@
     .tier {
       background: var(--panel);
       border-left: 5px solid var(--stone);
-      padding: 16px;
+      padding: 14px;
     }
     .tier.save { border-left-color: var(--blue); }
     .tier.buy {
@@ -144,37 +210,37 @@
       border-left-color: var(--ink);
     }
     .tier-tag {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       opacity: 0.85;
     }
     .tier h3 {
-      margin: 0 0 6px;
-      font-size: 1.15rem;
+      margin: 0 0 5px;
+      font-size: 1.1rem;
       font-weight: 800;
     }
     .tier p {
       margin: 0;
       font-family: 'Newsreader', Georgia, serif;
       font-style: italic;
-      font-size: 0.98rem;
+      font-size: 0.94rem;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
     }
     th, td {
       text-align: left;
-      padding: 10px 12px;
+      padding: 9px 10px;
       border-bottom: 1px solid #2b302a;
     }
     th {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--stone);
@@ -187,8 +253,8 @@
     }
     .badge {
       display: inline-block;
-      padding: 2px 7px;
-      font-size: 0.72rem;
+      padding: 2px 6px;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -200,8 +266,8 @@
     .callout {
       background: var(--panel);
       border-left: 5px solid var(--red);
-      padding: 16px 18px;
-      font-size: 0.95rem;
+      padding: 15px 17px;
+      font-size: 0.93rem;
     }
     .callout strong { color: var(--white); }
     .callout p { margin: 6px 0 0; color: var(--stone); }
@@ -210,10 +276,10 @@
       list-style: none;
       padding: 0;
       margin: 0;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
     .sources li {
-      padding: 6px 0;
+      padding: 5px 0;
       border-bottom: 1px solid #242823;
       color: var(--stone);
     }
@@ -223,10 +289,10 @@
     }
     .sources a:hover { text-decoration: underline; }
     footer {
-      margin-top: 48px;
-      padding-top: 20px;
+      margin-top: 44px;
+      padding-top: 18px;
       border-top: 1px solid #2b302a;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--stone);
     }
   </style>
@@ -242,15 +308,26 @@
     <div class="grid">
       <div class="player-col">
         <div class="reel-frame">
-          <video controls playsinline preload="metadata" src="reel.mp4">
+          <video id="reelVideo" controls playsinline preload="auto" poster="poster.jpg">
+            <source src="reel.mp4" type="video/mp4">
             Your browser does not support HTML5 video. <a href="reel.mp4">Download reel.mp4</a>.
           </video>
+          <button id="playOverlay" class="play-overlay" type="button" aria-label="Play video">
+            <span class="play-btn-box">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><polygon points="3,1 14,8 3,15"/></svg>
+              Watch Video (1:17)
+            </span>
+          </button>
         </div>
         <div class="player-meta">
-          <span>9:16 Vertical · 1080×1920</span>
-          <span>77.5 s · 30 fps · −16 LUFS</span>
+          <span>9:16 · 1080×1920 · 30 fps</span>
+          <span>−16 LUFS</span>
         </div>
-        <a class="download-btn" href="reel.mp4" download>Download MP4</a>
+        <div class="player-actions">
+          <button id="toggleBtn" class="action-btn" type="button">Play Video</button>
+          <a class="action-btn secondary" href="reel.mp4" download>Download MP4</a>
+        </div>
+        <div id="videoStatus" class="video-status"></div>
       </div>
 
       <div class="details-col">
@@ -376,5 +453,54 @@
       All prices reflect the US market in USD as verified on November 24, 2026. Typography: Archivo, Archivo Narrow, and Newsreader (SIL Open Font License). Map geometry: Natural Earth (Public Domain).
     </footer>
   </div>
+
+  <script>
+    (function () {
+      const video = document.getElementById('reelVideo');
+      const overlay = document.getElementById('playOverlay');
+      const toggleBtn = document.getElementById('toggleBtn');
+      const status = document.getElementById('videoStatus');
+
+      function syncUI() {
+        const playing = !video.paused && !video.ended;
+        overlay.classList.toggle('hidden', playing);
+        toggleBtn.textContent = playing ? 'Pause Video' : 'Play Video';
+      }
+
+      async function togglePlay() {
+        status.style.display = 'none';
+        try {
+          if (video.paused || video.ended) {
+            await video.play();
+          } else {
+            video.pause();
+          }
+        } catch (err) {
+          // Fallback: if browser blocks unmuted play, retry muted so playback always starts
+          try {
+            video.muted = true;
+            await video.play();
+            status.textContent = 'Started muted due to browser policy — click the speaker icon to unmute.';
+            status.style.display = 'block';
+          } catch (err2) {
+            status.textContent = 'Playback blocked by browser (' + err2.message + '). Try Download MP4.';
+            status.style.display = 'block';
+          }
+        }
+        syncUI();
+      }
+
+      overlay.addEventListener('click', togglePlay);
+      toggleBtn.addEventListener('click', togglePlay);
+      video.addEventListener('play', syncUI);
+      video.addEventListener('pause', syncUI);
+      video.addEventListener('ended', syncUI);
+      video.addEventListener('error', function () {
+        const code = video.error ? video.error.code : 'unknown';
+        status.textContent = 'Video load error (code ' + code + '). Please refresh or use Download MP4.';
+        status.style.display = 'block';
+      });
+    })();
+  </script>
 </body>
 </html>
